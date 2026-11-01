@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hráči – Noc netvorov</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="data.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+<div id="nav"></div>
+<section class="prvy-radok" style="border-top:0">
+  <div class="wrap">
+    <h2>Hráči</h2>
+    <p class="lead">Deň hry: <b id="h-den">1</b>. Zoznam sa vytvára z <b>data.js</b>. Fotky hráčov patria do <b>img/hraci/</b>.</p>
+    <div class="hraci-steny" id="hraci-steny"></div>
+    <!-- Voliteľne: vložená Google Tabuľka namiesto tabuľky nižšie
+    <iframe src="TVOJ_ODKAZ_NA_GOOGLE_TABULKU" height="600" title="Zoznam hráčov"></iframe> -->
+    <div class="tbl"><table>
+      <thead><tr><th>Hráč</th><th>Stav</th><th>Rola</th><th>Poznámka</th></tr></thead>
+      <tbody id="hraci-telo"></tbody>
+    </table></div>
+  </div>
+</section>
+</body>
+</html>

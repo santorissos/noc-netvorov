@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Štatistiky – Noc netvorov</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="data.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+<div id="nav"></div>
+<section class="prvy-radok" style="border-top:0">
+  <div class="wrap">
+    <h2>Štatistiky a víťazstva</h2>
+    <p class="lead">Všetko sa počíta samo z archívu hier v <b>data.js</b>.</p>
+
+    <h3>Tabuľka víťazstiev</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Poradie</th><th>Hráč</th><th>Výhry</th></tr></thead>
+      <tbody id="vitazstva"></tbody>
+    </table></div>
+
+    <h3>Ktorá strana vyhráva</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Strana</th><th>Výhry</th><th>Podiel</th></tr></thead>
+      <tbody id="stat-strany"></tbody>
+    </table></div>
+
+    <h3>Roly</h3>
+    <p class="lead">Koľkokrát bola rola odohraná a koľkokrát jej držiteľ vyhral. Berú sa len hry, kde je v archíve vyplnený zoznam hráčov s rolami.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Rola</th><th>Odohraná</th><th>Výhry</th><th>Úspešnosť</th></tr></thead>
+      <tbody id="stat-roly"></tbody>
+    </table></div>
+  </div>
+</section>
+</body>
+</html>

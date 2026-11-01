@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archív – Noc netvorov</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="data.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+<div id="nav"></div>
+<section class="prvy-radok" style="border-top:0">
+  <div class="wrap">
+    <h2>Archív hier</h2>
+    <p class="lead">Odohrané kolá, najnovšie navrchu. Pridávaš ich do <b>data.js</b> (zoznam ARCHIV).</p>
+        <div id="exp-nastroj" class="poznamka" hidden>
+      <b>Nástroj pre moderátora:</b> vytvorí záznam z aktuálnej hry (hráči, roly, hlasy).
+      <p><button type="button" class="btn" id="exp-btn">Vytvoriť záznam z aktuálnej hry</button></p>
+      <p><button type="button" class="btn druhy" id="zaloha-btn">Stiahnuť zálohu všetkých dát</button></p>
+      <p id="exp-info"></p>
+      <textarea id="exp-out" rows="14" readonly hidden></textarea>
+    </div>
+    <div id="archiv"></div>
+  </div>
+</section>
+</body>
+</html>

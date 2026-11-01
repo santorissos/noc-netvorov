@@ -1,0 +1,190 @@
+:root{
+  --noc:#101b1d; --noc2:#17262a; --hmla:#2c4147;
+  --kost:#e9e2d0; --striebro:#aebcbd; --krv:#a33b32; --zlato:#c9a45c; --mesiac:#f4f0e2;
+  color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--noc);color:var(--kost);font-family:"Crimson Pro",Georgia,serif;font-size:1.15rem;line-height:1.65}
+h1,h2,h3{font-family:Almendra,Georgia,serif;font-weight:700;line-height:1.15;margin:0}
+a{color:var(--zlato)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--zlato);outline-offset:3px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+
+/* Navigácia */
+nav{position:sticky;top:0;z-index:10;background:rgba(16,27,29,.94);border-bottom:1px solid var(--hmla)}
+nav .wrap{display:flex;gap:6px 22px;flex-wrap:wrap;align-items:center;padding-top:10px;padding-bottom:10px}
+nav b{font-family:Almendra,serif;font-size:1.25rem;margin-right:auto}
+nav a{text-decoration:none;color:var(--striebro)}
+nav a:hover{color:var(--kost)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;text-align:center;padding:110px 20px 130px;
+  background:radial-gradient(ellipse at 50% 0%,var(--hmla),var(--noc) 70%)}
+.moon{width:150px;height:150px;border-radius:50%;margin:0 auto 34px;
+  background:radial-gradient(circle at 35% 35%,#f4f0e2,#b9c4c3 70%);box-shadow:0 0 70px 14px rgba(174,188,189,.28)}
+.hero h1{font-size:clamp(2.8rem,9vw,5.5rem);letter-spacing:.02em}
+.hero p{max-width:34ch;margin:18px auto 30px;color:var(--striebro);font-size:1.3rem}
+.btn{display:inline-block;padding:12px 28px;background:var(--krv);color:var(--kost);text-decoration:none;font-family:Almendra,serif;font-size:1.15rem;border-radius:2px}
+.btn:hover{background:#b94a40}
+
+section{padding:70px 0;border-top:1px solid var(--hmla)}
+section h2{font-size:2.3rem;margin-bottom:8px}
+.lead{color:var(--striebro);margin:0 0 34px;max-width:60ch}
+
+/* Pravidlá – časová os dňa a noci */
+.cas{list-style:none;margin:0;padding:0;border-left:2px solid var(--hmla)}
+.cas li{position:relative;padding:0 0 22px 26px}
+.cas li::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--krv)}
+.cas li.den::before{background:var(--zlato)}
+.cas time{font-family:Almendra,serif;font-size:1.3rem;display:block}
+
+/* Roly */
+.roly{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px;margin-top:10px}
+.rola{background:var(--noc2);border:1px solid var(--hmla);border-radius:3px;overflow:hidden}
+.rola .foto{aspect-ratio:4/3;background:var(--hmla);display:grid;place-items:center;color:var(--striebro);font-style:italic}
+.rola .foto img{width:100%;height:100%;object-fit:cover;display:block}
+.rola div.txt{padding:14px 16px 18px}
+.rola h3{font-size:1.35rem}
+.rola .tim{font-size:.95rem;margin:2px 0 8px;color:var(--zlato)}
+.rola.netvor .tim{color:var(--krv)}
+.rola.netvor{border-color:#5b2a27}
+.rola p{margin:0;font-size:1.02rem;line-height:1.5}
+
+/* Tabuľka hráčov */
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--hmla)}
+th{font-family:Almendra,serif;font-weight:400;color:var(--striebro)}
+.mrtvy td{color:#7d8c8d;text-decoration:line-through}
+.mrtvy td:last-child{text-decoration:none}
+.tbl{overflow-x:auto}
+
+/* Kronika */
+.den-zaznam{padding:22px 0;border-bottom:1px solid var(--hmla)}
+.den-zaznam h3{font-size:1.5rem;margin-bottom:6px}
+.den-zaznam .noc{color:var(--striebro)}
+.den-zaznam .poprava{color:var(--krv)}
+
+iframe{width:100%;border:1px solid var(--hmla);border-radius:3px;background:var(--noc2)}
+.poznamka{padding:16px 18px;background:var(--noc2);border-left:3px solid var(--zlato);color:var(--striebro)}
+footer{padding:40px 0;text-align:center;color:var(--striebro);border-top:1px solid var(--hmla)}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Stav hry */
+.stav{background:var(--noc2);border-bottom:1px solid var(--hmla)}
+.stav .wrap{display:flex;flex-wrap:wrap;gap:10px 40px;justify-content:center;padding-top:22px;padding-bottom:22px;text-align:center}
+.stav div span{display:block;color:var(--striebro);font-size:.95rem}
+.stav div b{font-family:Almendra,serif;font-size:1.6rem;font-weight:700}
+.stav .odpocet{color:var(--zlato)}
+/* Filter rolí */
+.filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filter button{background:none;border:1px solid var(--hmla);color:var(--striebro);padding:6px 16px;font:inherit;border-radius:2px;cursor:pointer}
+.filter button[aria-pressed="true"]{background:var(--hmla);color:var(--kost)}
+.rola.neutral{border-color:#6b5a30}
+.rola.neutral .tim{color:#d9c28a}
+.rola[hidden]{display:none}
+/* Otázky */
+details{border-bottom:1px solid var(--hmla);padding:14px 0}
+summary{cursor:pointer;font-family:Almendra,serif;font-size:1.25rem}
+details p{margin:10px 0 0;color:var(--striebro)}
+.btn.druhy{background:none;border:1px solid var(--striebro);color:var(--kost);margin-left:8px}
+.btn.druhy:hover{background:var(--hmla)}
+.hero .btn{margin:6px 4px}
+
+/* ===== Svetlý režim ===== */
+html[data-theme="svetla"]{
+  --noc:#f1ebdc; --noc2:#e6dfcb; --hmla:#cbc1a6;
+  --kost:#1e2b2d; --striebro:#4a5b5d; --krv:#9a2e26; --zlato:#7a5a14; --mesiac:#5b4510;
+  color-scheme: light;
+}
+html[data-theme="svetla"] nav{background:rgba(241,235,220,.95)}
+.btn{color:#fff}
+.btn.druhy{color:var(--kost)}
+html[data-theme="svetla"] .moon{background:radial-gradient(circle at 35% 35%,#fffdf4,#d9d2bd 70%);box-shadow:0 0 60px 12px rgba(122,90,20,.18)}
+
+/* ===== Navigácia – nástroje ===== */
+nav .logo{font-family:Almendra,serif;font-size:1.25rem;margin-right:auto;color:var(--kost)}
+nav .nastroje{display:flex;gap:6px}
+nav .nastroje button{background:none;border:1px solid var(--hmla);color:var(--striebro);padding:3px 12px;font:inherit;font-size:.95rem;border-radius:2px;cursor:pointer}
+nav .nastroje button[aria-pressed="true"]{background:var(--hmla);color:var(--kost)}
+nav b{display:none}
+
+/* ===== Mozaika hráčov v pozadí úvodu ===== */
+.hero>*:not(.mozaika){position:relative;z-index:1}
+.mozaika{position:absolute;inset:0;z-index:0;display:flex;justify-content:space-between;align-items:center;
+  padding:16px 28px;pointer-events:none}
+.mozaika .strana{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 12px;width:min(24%,230px)}
+.mozaika .strana>a{display:block;text-align:center;min-width:0;pointer-events:auto}
+.mozaika .av{width:100%;opacity:.6;transition:opacity .2s,box-shadow .2s,border-color .2s}
+.mozaika em{display:block;margin-top:5px;font:normal 400 .9rem/1.2 Almendra,Georgia,serif;color:var(--mesiac);
+  text-shadow:0 0 8px rgba(244,240,226,.55),0 0 18px rgba(174,188,189,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html[data-theme="svetla"] .mozaika em{text-shadow:0 0 8px rgba(122,90,20,.25)}
+.mozaika a:hover .av{opacity:1;border-color:var(--mesiac);box-shadow:0 0 18px 3px rgba(244,240,226,.45)}
+.mozaika .mrtvy .av{filter:grayscale(1);opacity:.35}
+.mozaika .mrtvy em{color:var(--striebro);text-shadow:none;text-decoration:line-through;opacity:.7}
+
+/* ===== Avatar hráča ===== */
+.av{position:relative;display:block;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--hmla);border:1px solid var(--hmla)}
+.av::before{content:attr(data-i);position:absolute;inset:0;display:grid;place-items:center;font-family:Almendra,serif;font-size:1.6rem;color:var(--striebro)}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.av.velky{width:110px;margin:0 auto 8px}
+
+/* ===== Hráči ===== */
+.hraci-steny{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:22px 14px;margin:10px 0 50px;text-align:center}
+.hrac b{display:block;font-family:Almendra,serif;font-size:1.1rem}
+.hrac small{color:var(--zlato)}
+.hrac.mrtvy .av{filter:grayscale(1);opacity:.55}
+.hrac.mrtvy b{text-decoration:line-through;color:var(--striebro)}
+.hrac.mrtvy small{color:var(--krv)}
+.pocet{font-family:Almendra,serif;font-size:1.2rem}
+td.pocet{width:90px}
+h3{margin:36px 0 10px}
+
+/* ===== Archív ===== */
+.archiv-hra{background:var(--noc2);border:1px solid var(--hmla);border-left:3px solid var(--zlato);padding:18px 22px;margin-bottom:18px;border-radius:2px}
+.archiv-hra h3{margin:0 0 4px;font-size:1.5rem}
+.archiv-hra .meta{color:var(--striebro);font-size:1rem}
+.archiv-hra p{margin:10px 0 0}
+.archiv-hra .vitazi{color:var(--zlato)}
+.prvy-radok{padding-top:50px}
+
+@media (max-width:700px){
+  .hero{padding:170px 16px 180px}
+  .mozaika{flex-direction:column;justify-content:space-between;align-items:stretch;padding:10px 12px}
+  .mozaika .strana{grid-template-columns:repeat(4,1fr);width:100%;gap:8px;justify-items:center}
+  .mozaika .strana>a{width:100%;max-width:62px}
+  .mozaika em{font-size:.7rem}
+}
+
+/* ===== Archív: priebeh hry ===== */
+.archiv-hra details.priebeh{margin-top:14px;border-top:1px solid var(--hmla);padding-top:12px}
+.archiv-hra h4{font-family:Almendra,serif;font-size:1.15rem;margin:18px 0 8px;color:var(--striebro)}
+.archiv-hra .den-zaznam{padding:12px 0}
+.archiv-hra .den-zaznam h3{font-size:1.2rem}
+.archiv-hra .den-zaznam p{margin:4px 0}
+.hlasy-riadok{color:var(--striebro);font-size:1rem}
+#exp-out{width:100%;font:.85rem/1.4 ui-monospace,Consolas,monospace;background:var(--noc);color:var(--kost);border:1px solid var(--hmla);padding:10px}
+
+.zmaz{background:none;border:1px solid var(--krv);color:var(--krv);padding:6px 14px;font:inherit;border-radius:2px;cursor:pointer}
+.zmaz:hover{background:var(--krv);color:#fff}
+
+/* ===== Dni: obete a hlasovanie ===== */
+.den-blok{margin-bottom:34px}
+.ranne{padding:12px 16px;background:var(--noc2);border-left:3px solid var(--krv);margin:6px 0 16px}
+.obet{font-family:Almendra,serif;font-size:1.15rem;color:var(--krv)}
+
+/* ===== Príbeh ===== */
+.den-zaznam p{margin:8px 0;max-width:68ch}
+
+/* ===== Odkazy v mozaike a na stene hráčov ===== */
+.mozaika .strana>a{color:inherit;text-decoration:none}
+a.hrac{display:block;color:inherit;text-decoration:none}
+a.hrac:hover .av{border-color:var(--mesiac);box-shadow:0 0 16px 2px rgba(244,240,226,.35)}
+a.hrac:hover b{color:var(--zlato)}
+
+/* ===== Profil hráča ===== */
+.profil-hlavicka{display:flex;gap:26px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.profil-hlavicka .av.velky{width:150px;margin:0}
+.profil-hlavicka h2{margin-bottom:6px}
+.profil-hlavicka .lead{margin-bottom:10px}

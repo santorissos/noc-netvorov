@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noc netvorov</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Noc netvorov">
+<meta property="og:description" content="Online hra na Messengeri. Dedina proti netvorom. Prihlás sa a prežiješ noc?">
+<!-- ZMEŇ: za TVOJA-ADRESA dosaď adresu svojho webu z Netlify (musí byť celá, so začiatkom https://) -->
+<meta property="og:image" content="https://TVOJA-ADRESA.netlify.app/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Online hra na Messengeri v štýle Wolvesville. Dedina proti netvorom.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="data.js"></script>
+<script src="app.js"></script>
+</head>
+<body>
+
+<div id="nav"></div>
+
+<header class="hero">
+  <!-- Mozaika hráčov sa vytvára sama z data.js -->
+  <div class="mozaika" id="mozaika" aria-hidden="true"></div>
+  <div class="moon" aria-hidden="true"></div>
+  <h1>Noc netvorov</h1>
+  <!-- ZMEŇ: úvodný text -->
+  <p>V dedine sa skrývajú netvory. Cez deň hlasujete, v noci lovia. Prežije len ten, kto vie, komu veriť.</p>
+  <a class="btn" href="#prihlaska">Prihlásiť sa do hry</a>
+  <!-- Odkaz na chat nastavíš v data.js -->
+  <a class="btn druhy" href="https://m.me/ch/TVOJ_ODKAZ" target="_blank" rel="noopener" data-messenger>Skupinový chat</a>
+</header>
+
+<!-- ===================== STAV HRY ===================== -->
+<!-- Upravuješ v data.js (objekt STAV a zoznam HRACI) -->
+<div class="stav" aria-live="polite">
+  <div class="wrap">
+    <div><span>Deň hry</span><b id="s-den">1</b></div>
+    <div><span>Teraz je</span><b id="s-faza">Deň</b></div>
+    <div><span id="s-nazov">Ďalšia udalosť</span><b class="odpocet" id="s-odpocet">–</b></div>
+    <div><span>Žijúcich</span><b id="s-zivi">16 / 16</b></div>
+  </div>
+</div>
+
+<!-- ===================== PRAVIDLÁ ===================== -->
+<section id="pravidla">
+  <div class="wrap">
+    <h2>Pravidlá</h2>
+    <p class="lead">Hra beží cez Messenger. Každý deň a každá noc trvá v reálnom čase.</p>
+
+    <!-- ZMEŇ: časy podľa seba. Trieda "den" = zlatá bodka, bez nej = červená (noc) -->
+    <ol class="cas">
+      <li class="den"><time>08:00</time>Dedina sa prebúdza. Moderátor oznámi, kto v noci zomrel.</li>
+      <li class="den"><time>08:00 – 20:00</time>Diskusia v skupinovom chate a hlasovanie v ankete.</li>
+      <li class="den"><time>20:00</time>Poprava. Dedina obesí hráča s najviac hlasmi a odhalí sa jeho rola.</li>
+      <li><time>20:00 – 07:30</time>Noc. Každý napíše moderátorovi do súkromného chatu, čo robí.</li>
+      <li><time>07:30</time>Uzávierka nočných akcií. Kto nenapíše, nič nevykoná.</li>
+    </ol>
+    <p>Nočnú akciu napíš moderátorovi v súkromnom chate na Messengeri.</p>
+
+    <h3 style="margin:40px 0 10px">Ako sa vyhráva</h3>
+    <!-- ZMEŇ: ďalšie pravidlá -->
+    <ul>
+      <li>Dedina vyhráva, keď sú všetky netvory mŕtve.</li>
+      <li>Netvory vyhrávajú, keď ich je rovnako veľa ako dedinčanov.</li>
+      <li>Neutrálne roly majú vlastný cieľ, uvedený pri ich karte.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== ROLY ===================== -->
+<section id="roly">
+  <div class="wrap">
+    <h2>Roly</h2>
+    <p class="lead">Fotky vkladaj do priečinka <b>img</b>. Ak súbor chýba, zobrazí sa zástupný rámček.</p>
+
+    <div class="filter" role="group" aria-label="Filter rolí">
+      <button type="button" aria-pressed="true" data-f="vsetko">Všetky</button>
+      <button type="button" aria-pressed="false" data-f="dedina">Dedina</button>
+      <button type="button" aria-pressed="false" data-f="netvor">Netvory</button>
+      <button type="button" aria-pressed="false" data-f="neutral">Neutrálni</button>
+    </div>
+
+    <div class="roly">
+
+      <!-- ===== ŠABLÓNA ROLE: skopíruj celý blok <article>…</article> a prepíš ===== -->
+      <!-- Tím: class="rola" = dedina, "rola netvor" = netvory, "rola neutral" = neutrálni -->
+
+      <article class="rola">
+        <div class="foto"><img src="img/rolnik.jpg" alt="Roľník" onerror="this.remove()"><span>foto</span></div>
+        <div class="txt">
+          <h3>Roľník</h3>
+          <div class="tim">Dedina</div>
+          <p>Nemá žiadnu schopnosť. Jeho zbraňou je hlas pri hlasovaní.</p>
+        </div>
+      </article>
+
+      <article class="rola">
+        <div class="foto"><img src="img/vestec.jpg" alt="Veštec" onerror="this.remove()"><span>foto</span></div>
+        <div class="txt">
+          <h3>Veštec</h3>
+          <div class="tim">Dedina</div>
+          <p>Každú noc zistí rolu jedného hráča.</p>
+        </div>
+      </article>
+
+      <article class="rola netvor">
+        <div class="foto"><img src="img/vlkolak.jpg" alt="Vlkolak" onerror="this.remove()"><span>foto</span></div>
+        <div class="txt">
+          <h3>Vlkolak</h3>
+          <div class="tim">Netvory</div>
+          <p>V noci sa s ostatnými netvormi dohodne, koho zožerú.</p>
+        </div>
+      </article>
+
+      <article class="rola neutral">
+        <div class="foto"><img src="img/saso.jpg" alt="Šašo" onerror="this.remove()"><span>foto</span></div>
+        <div class="txt">
+          <h3>Šašo</h3>
+          <div class="tim">Neutrálni</div>
+          <p>Vyhráva, ak ho dedina obesí.</p>
+        </div>
+      </article>
+
+      <!-- sem pridávaj ďalšie roly -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRIHLÁŠKA ===================== -->
+<section id="prihlaska">
+  <div class="wrap">
+    <h2>Prihláška</h2>
+    <p class="lead">Hrá sa v 16 hráčoch. Vyplň formulár a pošli odkaz na svoj Messenger.</p>
+
+    <!-- Odkaz na formulár nastavíš v data.js (ODKAZY.prihlaska) -->
+    <div id="prihlaska-form"></div>
+    <p><a class="btn" href="https://m.me/ch/TVOJ_ODKAZ" target="_blank" rel="noopener" data-messenger>Otvoriť skupinový chat</a></p>
+  </div>
+</section>
+
+<!-- ===================== OTÁZKY ===================== -->
+<section id="otazky">
+  <div class="wrap">
+    <h2>Časté otázky</h2>
+    <!-- ZMEŇ: skopíruj <details> blok a pridaj ďalšie otázky -->
+    <details><summary>Čo ak nestihnem napísať nočnú akciu?</summary><p>Moderátor ju nezapočíta a tvoja rola v tú noc nič nevykoná.</p></details>
+    <details><summary>Môžem ukázať svoju rolu ostatným?</summary><p>Ak chceš, môžeš tvrdiť čokoľvek. Screenshoty z privátneho chatu s moderátorom sú zakázané.</p></details>
+    <details><summary>Čo ak nemôžem hrať niekoľko dní?</summary><p>Daj vedieť vopred. Ak mlčíš dva dni po sebe, dedina ťa zoberie ako mŕtveho.</p></details>
+    <details><summary>Čo sa stane pri remíze v hlasovaní?</summary><p>Nikto nie je obesený a hra pokračuje nocou.</p></details>
+  </div>
+</section>
+
+<!-- ===================== KRONIKA ===================== -->
+<section id="kronika">
+  <div class="wrap">
+    <h2>Kronika</h2>
+    <p class="lead">Príbeh hry: kto čo spravil a čo sa stalo. Najnovší deň je navrchu.</p>
+
+    <!-- Príbeh píšeš v data.js (zoznam KRONIKA), tu sa zobrazí sám -->
+    <div id="kronika-zoznam"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Noc netvorov · moderuje <b>TVOJE MENO</b> cez <a href="https://m.me/ch/TVOJ_ODKAZ" data-messenger target="_blank" rel="noopener">Messenger</a></div>
+</footer>
+
+</body>
+</html>
