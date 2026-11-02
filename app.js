@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded",function(){
   var nav=$("nav");
   if(nav){
     nav.outerHTML='<nav><div class="wrap">'+
-      '<a class="logo" href="index.html">Noc netvorov</a>'+
+      '<a class="logo" href="index.html">Santosville</a>'+
       '<a href="index.html#kronika">Kronika</a>'+
       '<a href="index.html#pravidla">Pravidlá</a>'+
       '<a href="index.html#roly">Roly</a>'+
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded",function(){
     if(!mp||(!hr&&!hist.length)){
       $("profil").innerHTML='<h2>Hráč sa nenašiel</h2><p class="lead">Vráť sa na zoznam hráčov a vyber ho znova.</p>';
     }else{
-      document.title=mp+" – Noc netvorov";
+      document.title=mp+" – Santosville";
       var mrt=hr&&hr.stav==="mrtvy";
       var stav=!hr?"Nehrá v aktuálnej hre.":mrt?("Padol"+(hr.poznamka?": "+esc(hr.poznamka):"")+(hr.rola&&hr.rola!=="?"?". Bol to <b>"+esc(hr.rola)+"</b>.":".")):"Žije v aktuálnej hre. Jeho rola zostáva tajná.";
       var info=[];

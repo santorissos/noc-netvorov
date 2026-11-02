@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Noc netvorov</title>
+<title>Santosville</title>
 <meta property="og:type" content="website">
-<meta property="og:title" content="Noc netvorov">
-<meta property="og:description" content="Online hra na Discorde v štýle Městečka Palermo. Dobrý tím proti zlému. Prežiješ noc?">
+<meta property="og:title" content="Santosville">
+<meta property="og:description" content="Online hra na Discorde v štýle Městečka Palermo. Osadníci proti zlému. Prežiješ noc?">
 <!-- ZMEŇ: za TVOJA-ADRESA dosaď adresu svojho webu z Netlify (musí byť celá, so začiatkom https://) -->
 <meta property="og:image" content="https://TVOJA-ADRESA.netlify.app/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Online hra na Discorde v štýle Městečka Palermo. Dobrý tím, zlý tím a sólo.">
+<meta name="description" content="Online hra na Discorde v štýle Městečka Palermo. Osadníci, Netvory a sólo.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,9 +27,9 @@
   <!-- Mozaika hráčov sa vytvára sama z data.js -->
   <div class="mozaika" id="mozaika" aria-hidden="true"></div>
   <div class="moon" aria-hidden="true"></div>
-  <h1>Noc netvorov</h1>
+  <h1>Santosville</h1>
   <!-- ZMEŇ: úvodný text -->
-  <p>V dedine Lednice sa skrývajú netvory. Cez deň hlasujete o poprave, v noci netvory lovia. Prežije len ten, kto vie, komu veriť.</p>
+  <p>V dedine Santosville sa skrývajú netvory. Cez deň hlasujete o poprave, v noci netvory lovia. Prežije len ten, kto vie, komu veriť.</p>
   <a class="btn" href="#prihlaska">Prihlásiť sa do hry</a>
   <!-- Odkaz na chat nastavíš v data.js -->
   <a class="btn druhy" href="https://discord.gg/TVOJ_ODKAZ" target="_blank" rel="noopener" data-chat>Discord server</a>
@@ -64,7 +64,7 @@
 <section id="pravidla">
   <div class="wrap">
     <h2>Pravidlá</h2>
-    <p class="lead">Noc netvorov je webová hra na štýl Městečka Palermo. Má 3 týmy: dobrý, zlý a sólo. Každý hráč má k dispozícii špeciálne schopnosti. Hráči používajú svoje schopnosti a snažia sa vyhrať.</p>
+    <p class="lead">Santosville je webová hra na štýl Městečka Palermo. Má 3 týmy: Osadníci, Netvory a Sólo. Každý hráč má k dispozícii špeciálne schopnosti. Hráči používajú svoje schopnosti a snažia sa vyhrať.</p>
     <p class="lead">Hra beží na Discorde. Každý deň a každá noc trvá v reálnom čase.</p>
 
     <!-- ZMEŇ: časy podľa seba. Trieda "den" = zlatá bodka, bez nej = červená (noc) -->
@@ -80,8 +80,8 @@
     <h3 style="margin:40px 0 10px">Ako sa vyhráva</h3>
     <!-- ZMEŇ: ďalšie pravidlá -->
     <ul>
-      <li>Dobrý tím vyhráva, keď sú všetky netvory mŕtve.</li>
-      <li>Zlý tím vyhráva, keď ich je rovnako veľa ako hráčov dobrého tímu.</li>
+      <li>Osadníci vyhráva, keď sú všetky netvory mŕtve.</li>
+      <li>Netvory vyhráva, keď ich je rovnako veľa ako hráčov dobrého tímu.</li>
       <li>Sólo roly majú vlastný cieľ, uvedený pri ich karte.</li>
     </ul>
   </div>
@@ -95,21 +95,21 @@
 
     <div class="filter" role="group" aria-label="Filter rolí">
       <button type="button" aria-pressed="true" data-f="vsetko">Všetky</button>
-      <button type="button" aria-pressed="false" data-f="dedina">Dobrý tím</button>
-      <button type="button" aria-pressed="false" data-f="netvor">Zlý tím</button>
+      <button type="button" aria-pressed="false" data-f="dedina">Osadníci</button>
+      <button type="button" aria-pressed="false" data-f="netvor">Netvory</button>
       <button type="button" aria-pressed="false" data-f="neutral">Sólo</button>
     </div>
 
     <div class="roly">
 
       <!-- ===== ŠABLÓNA ROLE: skopíruj celý blok <article>…</article> a prepíš ===== -->
-      <!-- Tím: class="rola" = dobrý, "rola netvor" = zlý, "rola neutral" = sólo -->
+      <!-- Tím: class="rola" = Osadníci, "rola netvor" = Osadníci, "rola neutral" = sólo -->
 
       <article class="rola">
         <div class="foto"><img src="img/emupir.jpg" alt="Emocionálny upír" onerror="this.remove()"><span></span></div>
         <div class="txt">
           <h3>Emocionálny upír</h3>
-          <div class="tim">Dobrý tím</div>
+          <div class="tim">Osadníci</div>
           <p>
 Vyber si hráča a vysaj jeho životnú energiu (zisti jeho auru): skorumpovanú, čistú alebo neznámu. Skorumpovaní hráči patria k zloduchom a čistí hráči patria do tímu dobrákov. <br>
 
@@ -121,7 +121,7 @@ Neznáme ciele môžu byť: Postupne doplním</p>
         <div class="foto"><img src="img/nekromant.jpg" alt="Nekromant" onerror="this.remove()"><span></span></div>
         <div class="txt">
           <h3>Nekromant</h3>
-          <div class="tim">Dobrý tím</div>
+          <div class="tim">Osadníci</div>
           <p>Počas noci môžeš anonymne hovoriť s mŕtvymi. Raz počas hry si môžeš v noci vybrať mŕtveho dobráka, ktorého na konci noci oživíš ako dobrého nemŕtveho prisluhovača.</p>
         </div>
       </article>
@@ -130,17 +130,26 @@ Neznáme ciele môžu byť: Postupne doplním</p>
         <div class="foto"><img src="img/voodoo.jpg" alt="Voodoo Kráľovná" onerror="this.remove()"><span></span></div>
         <div class="txt">
           <h3>Voodoo Kráľovná</h3>
-          <div class="tim">Dobrý tím</div>
+          <div class="tim">Osadníci</div>
           <p>Vládneš dvom voodoo bábikám. Čiernou bábikou a ihlou pošleš hráča k predkom, bielym handrovým panákom zas ochrániš obeť (ochrana sa minie až pri reálnom útoku). Počas prvej noci nemôžeš zabíjať, takže čiernu bábiku môžeš zatiaľ len hladkať.</p>
         </div>
       </article>
 
-      <article class="rola netvor">
-        <div class="foto"><img src="img/vlkolak.jpg" alt="Vlkolak" onerror="this.remove()"><span></span></div>
+      <article class="rola">
+        <div class="foto"><img src="img/kat.jpg" alt="Kat" onerror="this.remove()"><span></span></div>
         <div class="txt">
-          <h3>Vlkolak</h3>
-          <div class="tim">Zlý tím</div>
-          <p>V noci sa s ostatnými netvormi dohodne, koho zožerú.</p>
+          <h3>Kat</h3>
+          <div class="tim">Osadníci</div>
+          <p>Cez deň si vyberieš jedného hráča a zatvoriš ho do mučiarne. V noci s ním môžeš anonymne hovoriť a vypočuť ho, pričom väzeň je chránený pred útokom a nikto iný ho nemôže navštíviť. Potom sa rozhodneš, či ho popravíš, alebo ráno prepustíš. Poprava je definitívna, preto súď s rozvahou, lebo tvoj meč nemá cestu späť.</p>
+        </div>
+      </article>
+
+      <article class="rola netvor">
+        <div class="foto"><img src="img/ghul.jpg" alt="Ghul" onerror="this.remove()"><span></span></div>
+        <div class="txt">
+          <h3>Ghúl</h3>
+          <div class="tim">Netvory</div>
+          <p>Keď zapadne slnko, meníš sa na ghúla, vychádzaš von a ovoniaš jedného hráča. Podľa pachu krvi, strachu a viery spoznáš jeho skutočnú rolu a získaš informáciu, ktorú ostatní záporáci nemajú. Nič ťq nezastaví, ani zamknuté dvere, ani cesnak, ani nič... Pach si pamätáš aj po smrti.</p>
         </div>
       </article>
 
@@ -185,7 +194,7 @@ Neznáme ciele môžu byť: Postupne doplním</p>
 
 
 <footer>
-  <div class="wrap">Noc netvorov · moderuje <b>Santos</b> na <a href="https://discord.gg/TVOJ_ODKAZ" data-chat target="_blank" rel="noopener">Discorde</a></div>
+  <div class="wrap">Santosville · moderuje <b>Santos</b> na <a href="https://discord.gg/TVOJ_ODKAZ" data-chat target="_blank" rel="noopener">Discorde</a></div>
 </footer>
 
 </body>
