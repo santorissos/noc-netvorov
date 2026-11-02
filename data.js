@@ -9,7 +9,7 @@ var STAV = {
   faza: "Deň",                       // "Deň" alebo "Noc"
   dalsiaNazov: "Poprava o",          // čo nasleduje
   dalsiaCas: "2026-11-02T20:00:00",  // kedy (rok-mesiac-deň T hodina:minúta)
-  messenger: "https://m.me/ch/TVOJ_ODKAZ", // odkaz na skupinový chat
+  discord: "https://discord.gg/TVOJ_ODKAZ",  // pozvánka na Discord server
   zvuk: "audio/ambient.mp3"          // zvuk na pozadí (voliteľné)
 };
 
@@ -24,32 +24,37 @@ var ODKAZY = {
    foto:  názov súboru v priečinku img/hraci/ (bez diakritiky, napr. jan.jpg)
    stav:  "zije" alebo "mrtvy"
    rola:  napíš rolu až keď hráč zomrie, dovtedy "?"
-   poznamka: napr. "Obesený, deň 1" alebo "Zožratý v noci 2"            */
+   poznamka: napr. "Obesený, deň 1" alebo "Zožratý v noci 2"
+   Údaje do profilu (všetko voliteľné, prázdne sa nezobrazí):
+     vek, bydlisko, povolanie, zaluby – krátke údaje
+     o_mne – voľný text o hráčovi (pár viet)
+     dalsie – ľubovoľné vlastné položky, napr. dalsie:{"Obľúbené jedlo":"pizza"}
+   Pozor: profil je verejný, píš len to, s čím hráč súhlasí (mesto, nie adresa).            */
 var HRACI = [
-  {meno:"Hráč 1", foto:"hrac1.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 2", foto:"hrac2.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 3", foto:"hrac3.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 4", foto:"hrac4.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 5", foto:"hrac5.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 6", foto:"hrac6.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 7", foto:"hrac7.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 8", foto:"hrac8.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 9", foto:"hrac9.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 10", foto:"hrac10.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 11", foto:"hrac11.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 12", foto:"hrac12.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 13", foto:"hrac13.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 14", foto:"hrac14.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 15", foto:"hrac15.jpg", stav:"zije", rola:"?", poznamka:""},
-  {meno:"Hráč 16", foto:"hrac16.jpg", stav:"zije", rola:"?", poznamka:""},
+  {meno:"Hráč 1", foto:"hrac1.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 2", foto:"hrac2.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 3", foto:"hrac3.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 4", foto:"hrac4.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 5", foto:"hrac5.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 6", foto:"hrac6.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Michal", foto:"Michal.jpg", stav:"mrtvy", rola:"?", poznamka:"", vek:"40", bydlisko:"Kolpachy", povolanie:"učiteľ", zaluby:"šerm", o_mne:"Som"},
+  {meno:"Hráč 8", foto:"hrac8.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 9", foto:"hrac9.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 10", foto:"hrac10.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 11", foto:"hrac11.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 12", foto:"hrac12.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 13", foto:"hrac13.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 14", foto:"hrac14.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 15", foto:"hrac15.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
+  {meno:"Hráč 16", foto:"hrac16.jpg", stav:"zije", rola:"?", poznamka:"", vek:"", bydlisko:"", povolanie:"", zaluby:"", o_mne:""},
 ];
 
 /* ---- HLASOVANIE ----
    Jeden riadok = jeden hlas. Stránka ich sama zráta.                    */
 var HLASY = [
-  {den:1, kto:"Hráč 1", koho:"Hráč 3"},
-  {den:1, kto:"Hráč 2", koho:"Hráč 3"},
-  {den:1, kto:"Hráč 4", koho:"Hráč 2"}
+  {den:1, kto:"Hráč X", koho:"Hráč Y"},
+  {den:1, kto:"Hráč Y", koho:"Hráč X"},
+  {den:1, kto:"Hráč Z", koho:"Hráč X"}
 ];
 
 /* ---- RANNÉ OBETE (kto zomrel v noci) ----
@@ -58,7 +63,7 @@ var HLASY = [
    ako:  napr. "Zožratý vlkolakmi" (voliteľné)
    rola: rola obete, ak ju chceš odhaliť (voliteľné)                      */
 var UMRTIA = [
-  {den:2, kto:"Hráč 4", ako:"Zožratý v noci", rola:"Roľník"}
+  {den:1, kto:"Hráč XY", ako:"Zožratý v noci", rola:"Survivalista"}
 ];
 
 /* ---- PRÍBEH / KRONIKA (zobrazuje sa na hlavnej stránke) ----
@@ -69,8 +74,13 @@ var UMRTIA = [
 var KRONIKA = [
   {den:1, nadpis:"Prvá noc",
    text:["Dedina sa uložila k spánku. Nikto nevedel, kto sa medzi nimi skrýva.",
-         "Veštec si v tme posvietil na Hráča 3. To, čo zbadal, si nechal pre seba."]}
+         "Michal si v tme dobre pospal. To, čo sa mu sníva, si nechal pre seba."]},
+  {den:2, nadpis:"Prvá poprava",
+text:["Dedina sa zhromaždila pri studni. Peter obvinil Janu.",
+"Jana sa bránila, no hlasy boli jasné. Bola to Roľníčka."]},
+         
 ];
+
 
 /* ---- ARCHÍV HIER ----
    Povinné: nazov, datum, hracov, strana, vitazi, popis
@@ -82,21 +92,21 @@ var KRONIKA = [
    Najjednoduchšie: otvor archiv.html#admin a použi tlačidlo na export. */
 var ARCHIV = [
   {nazov:"Ukážkové kolo", datum:"1. 11. 2026", hracov:4, strana:"Dedina", vitazi:["Hráč 1","Hráč 2"],
-   popis:"Dedina vyhrala v 2. dni. Zmaž tento záznam a pridaj svoje.",
+   popis:"Dedina vyhrala v 2. dni. ",
    pribeh:[
      {den:1, nadpis:"Prvá noc", text:["Veštec zbadal vlkolaka a ráno to oznámil dedine.","Dedina Hráča 3 obesila."]}
    ],
    hraci:[
-     {meno:"Hráč 1", rola:"Veštec",  osud:"Prežil"},
-     {meno:"Hráč 2", rola:"Roľník",  osud:"Prežil"},
+     {meno:"Hráč 1", rola:"Druid",  osud:"Prežil"},
+     {meno:"Hráč 2", rola:"Druid",  osud:"Prežil"},
      {meno:"Hráč 3", rola:"Vlkolak", osud:"Obesený, deň 1"},
-     {meno:"Hráč 4", rola:"Roľník",  osud:"Zožratý v noci 1"}
+     {meno:"Hráč 4", rola:"Čarodej",  osud:"Zožratý v noci 1"}
    ],
    dni:[
-     {den:1, noc:"Dedina sa prebudila. Zomrel Hráč 4.", poprava:"Dedina obesila Hráča 3. Bol to Vlkolak."}
+     {den:1, noc:"Dedina sa prebudila. Zomrel Hráč X.", poprava:"Dedina obesila Hráča Y. Bol to Dilino."}
    ],
    hlasy:[
-     {den:1, kto:"Hráč 1", koho:"Hráč 3"},
-     {den:1, kto:"Hráč 2", koho:"Hráč 3"}
+     {den:1, kto:"Hráč X", koho:"Hráč X"},
+     {den:1, kto:"Hráč Y", koho:"Hráč Y"}
    ]}
 ];

@@ -30,11 +30,11 @@ document.addEventListener("DOMContentLoaded",function(){
   if(nav){
     nav.outerHTML='<nav><div class="wrap">'+
       '<a class="logo" href="index.html">Noc netvorov</a>'+
+      '<a href="index.html#kronika">Kronika</a>'+
       '<a href="index.html#pravidla">Pravidlá</a>'+
       '<a href="index.html#roly">Roly</a>'+
       '<a href="hraci.html">Hráči</a>'+
       '<a href="hlasovanie.html">Hlasovanie</a>'+
-      '<a href="index.html#kronika">Kronika</a>'+
       '<a href="vitazstva.html">Štatistiky</a>'+
       '<a href="archiv.html">Archív</a>'+
       '<a href="index.html#prihlaska">Prihláška</a>'+
@@ -65,8 +65,8 @@ document.addEventListener("DOMContentLoaded",function(){
     });
   }
 
-  /* ---- Odkazy na Messenger ---- */
-  document.querySelectorAll("[data-messenger]").forEach(function(a){a.href=STAV.messenger});
+  /* ---- Odkazy na Discord ---- */
+  document.querySelectorAll("[data-chat]").forEach(function(a){a.href=STAV.discord});
 
   /* ---- Pás so stavom hry ---- */
   if($("s-den")){
@@ -95,7 +95,23 @@ document.addEventListener("DOMContentLoaded",function(){
 
   /* ---- Kronika (príbeh) na hlavnej stránke ---- */
   if($("kronika-zoznam")){
-    $("kronika-zoznam").innerHTML=pribehHtml(KRONIKA)||'<p class="poznamka">Príbeh sa začne písať s prvou nocou.</p>';
+    var kz=$("kronika-zoznam"), kv=$("kronika-vyber");
+    var vykresliKroniku=function(){
+      var v=kv?kv.value:"vsetky";
+      var zoz=v==="vsetky"?KRONIKA:KRONIKA.filter(function(d){return String(d.den)===v});
+      kz.innerHTML=pribehHtml(zoz)||'<p class="poznamka">Príbeh sa začne písať s prvou nocou.</p>';
+    };
+    if(kv){
+      var videne={}, dniK=KRONIKA.slice().sort(function(a,b){return b.den-a.den}).filter(function(d){
+        if(videne[d.den]) return false; videne[d.den]=true; return true;
+      });
+      kv.innerHTML='<option value="vsetky">Všetky dni</option>'+dniK.map(function(d){
+        return '<option value="'+esc(d.den)+'">Deň '+esc(d.den)+(d.nadpis?': '+esc(d.nadpis):'')+'</option>';
+      }).join("");
+      if(dniK.length) kv.value=String(dniK[0].den);
+      kv.addEventListener("change",vykresliKroniku);
+    }
+    vykresliKroniku();
   }
 
   /* ---- Filter rolí ---- */
@@ -172,8 +188,15 @@ document.addEventListener("DOMContentLoaded",function(){
       document.title=mp+" – Noc netvorov";
       var mrt=hr&&hr.stav==="mrtvy";
       var stav=!hr?"Nehrá v aktuálnej hre.":mrt?("Padol"+(hr.poznamka?": "+esc(hr.poznamka):"")+(hr.rola&&hr.rola!=="?"?". Bol to <b>"+esc(hr.rola)+"</b>.":".")):"Žije v aktuálnej hre. Jeho rola zostáva tajná.";
+      var info=[];
+      if(hr){
+        [["vek","Vek"],["bydlisko","Bydlisko"],["povolanie","Povolanie"],["zaluby","Záľuby"]].forEach(function(p){if(hr[p[0]]) info.push([p[1],hr[p[0]]])});
+        if(hr.dalsie) Object.keys(hr.dalsie).forEach(function(k){if(hr.dalsie[k]) info.push([k,hr.dalsie[k]])});
+      }
+      var infoHtml=(info.length?'<dl class="profil-info">'+info.map(function(i){return '<dt>'+esc(i[0])+'</dt><dd>'+esc(i[1])+'</dd>'}).join("")+'</dl>':'')+
+        (hr&&hr.o_mne?'<p class="o-mne">'+esc(hr.o_mne)+'</p>':'');
       $("profil").innerHTML='<div class="profil-hlavicka">'+foto(hr||{meno:mp,foto:""},"av velky")+
-        '<div><h2>'+esc(mp)+'</h2><p class="lead">'+stav+'</p><p>Odohrané hry: <b>'+hist.length+'</b> · Výhry: <b>'+vyhry+'</b></p></div></div>'+
+        '<div><h2>'+esc(mp)+'</h2><p class="lead">'+stav+'</p><p>Odohrané hry: <b>'+hist.length+'</b> · Výhry: <b>'+vyhry+'</b></p></div></div>'+infoHtml+
         (hist.length?'<h3>História hier</h3><div class="tbl"><table><thead><tr><th>Hra</th><th>Dátum</th><th>Rola</th><th>Osud</th><th>Výsledok</th></tr></thead><tbody>'+
           hist.slice().reverse().map(function(r){
             return '<tr><td>'+esc(r.g.nazov||"(bez názvu)")+'</td><td>'+esc(r.g.datum)+'</td><td>'+esc(r.p?r.p.rola:"–")+'</td><td>'+esc(r.p?r.p.osud:"–")+'</td><td>'+(r.v?"Výhra":"Prehra")+'</td></tr>';

@@ -188,3 +188,17 @@ a.hrac:hover b{color:var(--zlato)}
 .profil-hlavicka .av.velky{width:150px;margin:0}
 .profil-hlavicka h2{margin-bottom:6px}
 .profil-hlavicka .lead{margin-bottom:10px}
+
+/* ===== Výber dňa v kronike ===== */
+.kron-vyber{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;color:var(--striebro)}
+.kron-vyber select{background:var(--noc2);color:var(--kost);border:1px solid var(--hmla);padding:8px 12px;font:inherit;border-radius:2px;max-width:100%}
+
+/* ===== Údaje v profile hráča ===== */
+.profil-info{display:grid;grid-template-columns:max-content 1fr;gap:6px 22px;margin:18px 0 6px;max-width:560px}
+.profil-info dt{font-family:Almendra,serif;color:var(--striebro)}
+.profil-info dd{margin:0}
+.o-mne{max-width:62ch;margin:10px 0 24px;font-style:italic;color:var(--striebro)}
+
+/* Roletka dní v páse so stavom */
+.stav .kron-vyber{flex:0 0 100%;justify-content:center;margin:0 0 4px}
+.stav .kron-vyber select{min-width:min(100%,260px)}

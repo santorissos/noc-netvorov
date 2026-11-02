@@ -6,11 +6,11 @@
 <title>Noc netvorov</title>
 <meta property="og:type" content="website">
 <meta property="og:title" content="Noc netvorov">
-<meta property="og:description" content="Online hra na Messengeri. Dedina proti netvorom. Prihlás sa a prežiješ noc?">
+<meta property="og:description" content="Online hra na Discorde v štýle Městečka Palermo. Dobrý tím proti zlému. Prežiješ noc?">
 <!-- ZMEŇ: za TVOJA-ADRESA dosaď adresu svojho webu z Netlify (musí byť celá, so začiatkom https://) -->
 <meta property="og:image" content="https://TVOJA-ADRESA.netlify.app/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Online hra na Messengeri v štýle Wolvesville. Dedina proti netvorom.">
+<meta name="description" content="Online hra na Discorde v štýle Městečka Palermo. Dobrý tím, zlý tím a sólo.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,16 +29,19 @@
   <div class="moon" aria-hidden="true"></div>
   <h1>Noc netvorov</h1>
   <!-- ZMEŇ: úvodný text -->
-  <p>V dedine sa skrývajú netvory. Cez deň hlasujete, v noci lovia. Prežije len ten, kto vie, komu veriť.</p>
+  <p>V dedine Lednice sa skrývajú netvory. Cez deň hlasujete o poprave, v noci netvory lovia. Prežije len ten, kto vie, komu veriť.</p>
   <a class="btn" href="#prihlaska">Prihlásiť sa do hry</a>
   <!-- Odkaz na chat nastavíš v data.js -->
-  <a class="btn druhy" href="https://m.me/ch/TVOJ_ODKAZ" target="_blank" rel="noopener" data-messenger>Skupinový chat</a>
+  <a class="btn druhy" href="https://discord.gg/TVOJ_ODKAZ" target="_blank" rel="noopener" data-chat>Discord server</a>
 </header>
 
 <!-- ===================== STAV HRY ===================== -->
 <!-- Upravuješ v data.js (objekt STAV a zoznam HRACI) -->
 <div class="stav" aria-live="polite">
   <div class="wrap">
+    <label class="kron-vyber">Kronika, zobraziť deň:
+      <select id="kronika-vyber"></select>
+    </label>
     <div><span>Deň hry</span><b id="s-den">1</b></div>
     <div><span>Teraz je</span><b id="s-faza">Deň</b></div>
     <div><span id="s-nazov">Ďalšia udalosť</span><b class="odpocet" id="s-odpocet">–</b></div>
@@ -46,28 +49,40 @@
   </div>
 </div>
 
+<!-- ===================== KRONIKA ===================== -->
+<section id="kronika">
+  <div class="wrap">
+    <h2>Kronika</h2>
+    <p class="lead">Príbeh hry: kto čo spravil a čo sa stalo. Deň si vyberieš v zozname hore nad odpočtom.</p>
+
+    <!-- Príbeh píšeš v data.js (zoznam KRONIKA), tu sa zobrazí sám -->
+    <div id="kronika-zoznam"></div>
+  </div>
+</section>
+
 <!-- ===================== PRAVIDLÁ ===================== -->
 <section id="pravidla">
   <div class="wrap">
     <h2>Pravidlá</h2>
-    <p class="lead">Hra beží cez Messenger. Každý deň a každá noc trvá v reálnom čase.</p>
+    <p class="lead">Noc netvorov je webová hra na štýl Městečka Palermo. Má 3 týmy: dobrý, zlý a sólo. Každý hráč má k dispozícii špeciálne schopnosti. Hráči používajú svoje schopnosti a snažia sa vyhrať.</p>
+    <p class="lead">Hra beží na Discorde. Každý deň a každá noc trvá v reálnom čase.</p>
 
     <!-- ZMEŇ: časy podľa seba. Trieda "den" = zlatá bodka, bez nej = červená (noc) -->
     <ol class="cas">
       <li class="den"><time>08:00</time>Dedina sa prebúdza. Moderátor oznámi, kto v noci zomrel.</li>
-      <li class="den"><time>08:00 – 20:00</time>Diskusia v skupinovom chate a hlasovanie v ankete.</li>
+      <li class="den"><time>08:00 – 20:00</time>Diskusia na Discorde a hlasovanie v ankete.</li>
       <li class="den"><time>20:00</time>Poprava. Dedina obesí hráča s najviac hlasmi a odhalí sa jeho rola.</li>
-      <li><time>20:00 – 07:30</time>Noc. Každý napíše moderátorovi do súkromného chatu, čo robí.</li>
+      <li><time>20:00 – 07:30</time>Noc. Každý napíše moderátorovi do súkromnej správy na Discorde, čo robí.</li>
       <li><time>07:30</time>Uzávierka nočných akcií. Kto nenapíše, nič nevykoná.</li>
     </ol>
-    <p>Nočnú akciu napíš moderátorovi v súkromnom chate na Messengeri.</p>
+    <p>Nočnú akciu napíš moderátorovi v súkromnej správe na Discorde.</p>
 
     <h3 style="margin:40px 0 10px">Ako sa vyhráva</h3>
     <!-- ZMEŇ: ďalšie pravidlá -->
     <ul>
-      <li>Dedina vyhráva, keď sú všetky netvory mŕtve.</li>
-      <li>Netvory vyhrávajú, keď ich je rovnako veľa ako dedinčanov.</li>
-      <li>Neutrálne roly majú vlastný cieľ, uvedený pri ich karte.</li>
+      <li>Dobrý tím vyhráva, keď sú všetky netvory mŕtve.</li>
+      <li>Zlý tím vyhráva, keď ich je rovnako veľa ako hráčov dobrého tímu.</li>
+      <li>Sólo roly majú vlastný cieľ, uvedený pri ich karte.</li>
     </ul>
   </div>
 </section>
@@ -76,35 +91,38 @@
 <section id="roly">
   <div class="wrap">
     <h2>Roly</h2>
-    <p class="lead">Fotky vkladaj do priečinka <b>img</b>. Ak súbor chýba, zobrazí sa zástupný rámček.</p>
+    <!--<p class="lead">Fotky vkladaj do priečinka <b>img</b>. Ak súbor chýba, zobrazí sa zástupný rámček.</p> -->
 
     <div class="filter" role="group" aria-label="Filter rolí">
       <button type="button" aria-pressed="true" data-f="vsetko">Všetky</button>
-      <button type="button" aria-pressed="false" data-f="dedina">Dedina</button>
-      <button type="button" aria-pressed="false" data-f="netvor">Netvory</button>
-      <button type="button" aria-pressed="false" data-f="neutral">Neutrálni</button>
+      <button type="button" aria-pressed="false" data-f="dedina">Dobrý tím</button>
+      <button type="button" aria-pressed="false" data-f="netvor">Zlý tím</button>
+      <button type="button" aria-pressed="false" data-f="neutral">Sólo</button>
     </div>
 
     <div class="roly">
 
       <!-- ===== ŠABLÓNA ROLE: skopíruj celý blok <article>…</article> a prepíš ===== -->
-      <!-- Tím: class="rola" = dedina, "rola netvor" = netvory, "rola neutral" = neutrálni -->
+      <!-- Tím: class="rola" = dobrý, "rola netvor" = zlý, "rola neutral" = sólo -->
 
       <article class="rola">
-        <div class="foto"><img src="img/rolnik.jpg" alt="Roľník" onerror="this.remove()"><span>foto</span></div>
+        <div class="foto"><img src="img/emupir.jpg" alt="Emocionálny upír" onerror="this.remove()"><span>foto</span></div>
         <div class="txt">
-          <h3>Roľník</h3>
-          <div class="tim">Dedina</div>
-          <p>Nemá žiadnu schopnosť. Jeho zbraňou je hlas pri hlasovaní.</p>
+          <h3>Emocionálny upír</h3>
+          <div class="tim">Dobrý tím</div>
+          <p>
+Vyber si hráča a vysaj jeho životnú energiu (zisti jeho auru): skorumpovanú, čistú alebo neznámu. Skorumpovaní hráči patria k zloduchom a čistí hráči patria do tímu dobrákov. <br>
+
+Neznáme ciele môžu byť: Postupne doplním</p>
         </div>
       </article>
 
       <article class="rola">
-        <div class="foto"><img src="img/vestec.jpg" alt="Veštec" onerror="this.remove()"><span>foto</span></div>
+        <div class="foto"><img src="img/nekromant.jpg" alt="Nekromant" onerror="this.remove()"><span>foto</span></div>
         <div class="txt">
-          <h3>Veštec</h3>
-          <div class="tim">Dedina</div>
-          <p>Každú noc zistí rolu jedného hráča.</p>
+          <h3>Nekromant</h3>
+          <div class="tim">Dobrý tím</div>
+          <p>Počas noci môžeš anonymne hovoriť s mŕtvymi. Raz počas hry si môžeš v noci vybrať mŕtveho dobráka, ktorého na konci noci oživíš ako dobrého nemŕtveho prisluhovača.</p>
         </div>
       </article>
 
@@ -112,7 +130,7 @@
         <div class="foto"><img src="img/vlkolak.jpg" alt="Vlkolak" onerror="this.remove()"><span>foto</span></div>
         <div class="txt">
           <h3>Vlkolak</h3>
-          <div class="tim">Netvory</div>
+          <div class="tim">Zlý tím</div>
           <p>V noci sa s ostatnými netvormi dohodne, koho zožerú.</p>
         </div>
       </article>
@@ -121,7 +139,7 @@
         <div class="foto"><img src="img/saso.jpg" alt="Šašo" onerror="this.remove()"><span>foto</span></div>
         <div class="txt">
           <h3>Šašo</h3>
-          <div class="tim">Neutrálni</div>
+          <div class="tim">Sólo</div>
           <p>Vyhráva, ak ho dedina obesí.</p>
         </div>
       </article>
@@ -136,11 +154,11 @@
 <section id="prihlaska">
   <div class="wrap">
     <h2>Prihláška</h2>
-    <p class="lead">Hrá sa v 16 hráčoch. Vyplň formulár a pošli odkaz na svoj Messenger.</p>
+    <p class="lead">Hrá sa v 16 hráčoch. Vyplň formulár a uveď svoje meno na Discorde.</p>
 
     <!-- Odkaz na formulár nastavíš v data.js (ODKAZY.prihlaska) -->
     <div id="prihlaska-form"></div>
-    <p><a class="btn" href="https://m.me/ch/TVOJ_ODKAZ" target="_blank" rel="noopener" data-messenger>Otvoriť skupinový chat</a></p>
+    <p><a class="btn" href="https://discord.gg/TVOJ_ODKAZ" target="_blank" rel="noopener" data-chat>Pripojiť sa na Discord</a></p>
   </div>
 </section>
 
@@ -150,25 +168,15 @@
     <h2>Časté otázky</h2>
     <!-- ZMEŇ: skopíruj <details> blok a pridaj ďalšie otázky -->
     <details><summary>Čo ak nestihnem napísať nočnú akciu?</summary><p>Moderátor ju nezapočíta a tvoja rola v tú noc nič nevykoná.</p></details>
-    <details><summary>Môžem ukázať svoju rolu ostatným?</summary><p>Ak chceš, môžeš tvrdiť čokoľvek. Screenshoty z privátneho chatu s moderátorom sú zakázané.</p></details>
+    <details><summary>Môžem ukázať svoju rolu ostatným?</summary><p>Ak chceš, môžeš tvrdiť čokoľvek. Screenshoty zo súkromných správ s moderátorom sú zakázané.</p></details>
     <details><summary>Čo ak nemôžem hrať niekoľko dní?</summary><p>Daj vedieť vopred. Ak mlčíš dva dni po sebe, dedina ťa zoberie ako mŕtveho.</p></details>
     <details><summary>Čo sa stane pri remíze v hlasovaní?</summary><p>Nikto nie je obesený a hra pokračuje nocou.</p></details>
   </div>
 </section>
 
-<!-- ===================== KRONIKA ===================== -->
-<section id="kronika">
-  <div class="wrap">
-    <h2>Kronika</h2>
-    <p class="lead">Príbeh hry: kto čo spravil a čo sa stalo. Najnovší deň je navrchu.</p>
-
-    <!-- Príbeh píšeš v data.js (zoznam KRONIKA), tu sa zobrazí sám -->
-    <div id="kronika-zoznam"></div>
-  </div>
-</section>
 
 <footer>
-  <div class="wrap">Noc netvorov · moderuje <b>TVOJE MENO</b> cez <a href="https://m.me/ch/TVOJ_ODKAZ" data-messenger target="_blank" rel="noopener">Messenger</a></div>
+  <div class="wrap">Noc netvorov · moderuje <b>Santos</b> na <a href="https://discord.gg/TVOJ_ODKAZ" data-chat target="_blank" rel="noopener">Discorde</a></div>
 </footer>
 
 </body>
