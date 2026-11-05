@@ -81,8 +81,10 @@ footer{padding:40px 0;text-align:center;color:var(--striebro);border-top:1px sol
 .filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
 .filter button{background:none;border:1px solid var(--hmla);color:var(--striebro);padding:6px 16px;font:inherit;border-radius:2px;cursor:pointer}
 .filter button[aria-pressed="true"]{background:var(--hmla);color:var(--kost)}
-.rola.neutral{border-color:#6b5a30}
-.rola.neutral .tim{color:#d9c28a}
+.rola.neutral{border-color:#4d3d73}
+.rola.neutral .tim{color:#b9a2e8}
+html[data-theme="svetla"] .rola.neutral{border-color:#b7a6d6}
+html[data-theme="svetla"] .rola.neutral .tim{color:#5b3f8c}
 .rola[hidden]{display:none}
 /* Otázky */
 details{border-bottom:1px solid var(--hmla);padding:14px 0}
@@ -202,3 +204,32 @@ a.hrac:hover b{color:var(--zlato)}
 /* Roletka dní v páse so stavom */
 .stav .kron-vyber{flex:0 0 100%;justify-content:center;margin:0 0 4px}
 .stav .kron-vyber select{min-width:min(100%,260px)}
+
+/* ===== Roly: zväčšenie a rozsvietenie po nabehnutí myšou ===== */
+.rola{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;position:relative}
+.rola .foto{overflow:hidden}
+.rola .foto img{transition:transform .35s ease,filter .35s ease;filter:brightness(.85)}
+.rola:hover,.rola:focus-within{
+  transform:scale(1.04);z-index:2;
+  border-color:var(--zlato);
+  box-shadow:0 0 22px 4px rgba(201,164,92,.35)}
+.rola.netvor:hover,.rola.netvor:focus-within{border-color:var(--krv);box-shadow:0 0 22px 4px rgba(163,59,50,.45)}
+.rola.neutral:hover,.rola.neutral:focus-within{border-color:#b9a2e8;box-shadow:0 0 22px 4px rgba(150,120,220,.45)}
+.rola:hover .foto img,.rola:focus-within .foto img{transform:scale(1.12);filter:brightness(1.12)}
+@media (hover:none){.rola:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){.rola,.rola .foto img{transition:none}}
+
+/* ===== Fotky hráčov: zväčšenie a rozsvietenie po nabehnutí myšou ===== */
+.av{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease,opacity .25s ease,filter .25s ease}
+.av img{transition:transform .35s ease,filter .35s ease}
+.mozaika .strana>a,a.hrac{position:relative}
+.mozaika .strana>a:hover,.mozaika .strana>a:focus-visible,a.hrac:hover,a.hrac:focus-visible{z-index:2}
+.mozaika a:hover .av,.mozaika a:focus-visible .av,a.hrac:hover .av,a.hrac:focus-visible .av{
+  transform:scale(1.15);opacity:1;border-color:var(--mesiac);
+  box-shadow:0 0 22px 5px rgba(244,240,226,.5)}
+.mozaika a:hover .av img,.mozaika a:focus-visible .av img,a.hrac:hover .av img,a.hrac:focus-visible .av img{
+  transform:scale(1.1);filter:brightness(1.12)}
+/* mŕtvi hráči sa po nabehnutí čiastočne vrátia z šedej */
+.mozaika .mrtvy:hover .av,a.hrac.mrtvy:hover .av{filter:grayscale(.4);opacity:.9}
+@media (hover:none){.mozaika a:hover .av,a.hrac:hover .av{transform:none}}
+@media (prefers-reduced-motion:reduce){.av,.av img{transition:none}}

@@ -7,8 +7,8 @@
 var STAV = {
   den: 1,                            // číslo dňa
   faza: "Deň",                       // "Deň" alebo "Noc"
-  dalsiaNazov: "Poprava o",          // čo nasleduje
-  dalsiaCas: "2026-11-02T20:00:00",  // kedy (rok-mesiac-deň T hodina:minúta)
+  dalsiaNazov: "Začiatok hry",          // čo nasleduje
+  dalsiaCas: "2026-12-02T20:00:00",  // kedy (rok-mesiac-deň T hodina:minúta)
   discord: "https://discord.gg/TVOJ_ODKAZ",  // pozvánka na Discord server
   zvuk: "audio/ambient.mp3"          // zvuk na pozadí (voliteľné)
 };
@@ -72,16 +72,21 @@ var UMRTIA = [
    Najnovší deň môžeš pridať na koniec, stránka ich sama zoradí.
    Pri exporte do archívu sa príbeh prenesie sám.                         */
 var KRONIKA = [
-  {den:1, nadpis:"Prvá noc",
-   text:["Dedina sa uložila k spánku. Nikto nevedel, kto sa medzi nimi skrýva.",
-         "Michal si v tme dobre pospal. To, čo sa mu sníva, si nechal pre seba."]},
-  {den:2, nadpis:"Prvá poprava",
+  {den:1, nadpis:"Úvod",
+   text:["Santosville bola vždy tichá dedina ukrytá medzi horami. Ľudia si tu poznali mená aj tajomstvá a dlho sa zdalo, že žiadne z nich nie je nebezpečné.",
+
+"Jedného podvečera však pri studni našli stopy, ktoré nepatrili nikomu. Z lesa sa ozvali zvuky, aké tam nikto nikdy nepočul, a po uliciach sa rozniesla zvesť, že medzi domami sa čosi ukrýva.",
+
+"Osadníci sa držia pohromade a hľadajú pravdu. Netvory sa držia v tieni a čakajú na noc. A potom sú tu tí, ktorí nepatria nikomu, každý s vlastným cieľom a vlastnými tajomstvami.",
+
+"Odvtedy sa dedina každý deň schádza, hádá sa, hlasuje a vynáša rozsudky. Každú noc sa v tme deje čosi, o čom ráno nikto nechce hovoriť. Táto kronika zapisuje, čo sa stalo."]},
+ /* {den:2, nadpis:"Prvá poprava",
 text:["Dedina sa zhromaždila pri studni. Peter obvinil Janu.",
-"Jana sa bránila, no hlasy boli jasné. Bola to Roľníčka."]},
+"Jana sa bránila, no hlasy boli jasné. Bola to Roľníčka."]},*/
          
 ];
 
-
+var ARCHIV = [];
 /* ---- ARCHÍV HIER ----
    Povinné: nazov, datum, hracov, strana, vitazi, popis
    Voliteľné (divák si ich rozklikne ako "Priebeh hry"):
@@ -90,8 +95,8 @@ text:["Dedina sa zhromaždila pri studni. Peter obvinil Janu.",
      dni:   noc a poprava po dňoch
      hlasy: hlasovanie (rovnaký formát ako HLASY vyššie)
    Najjednoduchšie: otvor archiv.html#admin a použi tlačidlo na export. */
-var ARCHIV = [
-  {nazov:"Ukážkové kolo", datum:"1. 11. 2026", hracov:4, strana:"Dedina", vitazi:["Hráč 1","Hráč 2"],
+/*var ARCHIV = [
+ {nazov:"Ukážkové kolo", datum:"1. 11. 2026", hracov:4, strana:"Dedina", vitazi:["Hráč 1","Hráč 2"],
    popis:"Dedina vyhrala v 2. dni. ",
    pribeh:[
      {den:1, nadpis:"Prvá noc", text:["Veštec zbadal vlkolaka a ráno to oznámil dedine.","Dedina Hráča 3 obesila."]}
@@ -109,4 +114,4 @@ var ARCHIV = [
      {den:1, kto:"Hráč X", koho:"Hráč X"},
      {den:1, kto:"Hráč Y", koho:"Hráč Y"}
    ]}
-];
+];*/
