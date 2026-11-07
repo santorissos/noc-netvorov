@@ -7,8 +7,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Santosville">
 <meta property="og:description" content="Online hra na Discorde v štýle Městečka Palermo. Osadníci proti zlému. Prežiješ noc?">
-<!-- ZMEŇ: za TVOJA-ADRESA dosaď adresu svojho webu z Netlify (musí byť celá, so začiatkom https://) -->
-<meta property="og:image" content="https://TVOJA-ADRESA.netlify.app/img/og.jpg">
+<!-- ZMEŇ: za TVOJE-MENO a NAZOV-REPOZITARA dosaď adresu svojho webu z GitHub Pages (musí byť celá, so začiatkom https://). Tento údaj nejde meniť v admine, čítajú ho roboty bez JavaScriptu. -->
+<meta property="og:image" content="https://TVOJE-MENO.github.io/NAZOV-REPOZITARA/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="Online hra na Discorde v štýle Městečka Palermo. Osadníci, Netvory a sólo.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
@@ -29,7 +29,7 @@
   <div class="moon" aria-hidden="true"></div>
   <h1>Santosville</h1>
   <!-- ZMEŇ: úvodný text -->
-  <p>V dedine Santosville sa skrývajú netvory. Cez deň hlasujete o poprave, v noci netvory lovia. Prežije len ten, kto vie, komu veriť.</p>
+  <p id="uvod-text">V dedine Santosville sa skrývajú netvory. Cez deň hlasujete o poprave, v noci netvory lovia. Prežije len ten, kto vie, komu veriť.</p>
   <a class="btn" href="#prihlaska">Prihlásiť sa do hry</a>
   <!-- Odkaz na chat nastavíš v data.js -->
   <a class="btn druhy" href="https://discord.gg/TVOJ_ODKAZ" target="_blank" rel="noopener" data-chat>Discord server</a>
@@ -64,26 +64,15 @@
 <section id="pravidla">
   <div class="wrap">
     <h2>Pravidlá</h2>
-    <p class="lead">Santosville je webová hra na štýl Městečka Palermo. Má 3 týmy: Osadníci, Netvory a Sólo. Každý hráč má k dispozícii špeciálne schopnosti. Hráči používajú svoje schopnosti a snažia sa vyhrať.</p>
-    <p class="lead">Hra beží na Discorde. Každý deň a každá noc trvá v reálnom čase.</p>
+    <div id="pravidla-uvod"></div>
 
     <!-- ZMEŇ: časy podľa seba. Trieda "den" = zlatá bodka, bez nej = červená (noc) -->
-    <ol class="cas">
-      <li class="den"><time>08:00</time>Dedina sa prebúdza. Moderátor oznámi, kto v noci zomrel.</li>
-      <li class="den"><time>08:00 – 20:00</time>Diskusia na Discorde a hlasovanie v ankete.</li>
-      <li class="den"><time>20:00</time>Poprava. Dedina obesí hráča s najviac hlasmi a odhalí sa jeho rola.</li>
-      <li><time>20:00 – 07:30</time>Noc. Každý napíše moderátorovi do súkromnej správy na Discorde, čo robí.</li>
-      <li><time>07:30</time>Uzávierka nočných akcií. Kto nenapíše, nič nevykoná.</li>
-    </ol>
-    <p>Nočnú akciu napíš moderátorovi v súkromnej správe na Discorde.</p>
+    <ol class="cas" id="pravidla-casy"></ol>
+    <p id="pravidla-poznamka"></p>
 
     <h3 style="margin:40px 0 10px">Ako sa vyhráva</h3>
     <!-- ZMEŇ: ďalšie pravidlá -->
-    <ul>
-      <li>Osadníci vyhrávajú, keď sú všetky netvory mŕtve.</li>
-      <li>Netvory vyhrávajú, keď ich je rovnako veľa ako osadníkov.</li>
-      <li>Sólo roly majú vlastný cieľ, uvedený pri ich karte.</li>
-    </ul>
+    <ul id="pravidla-vyhra"></ul>
   </div>
 </section>
 
@@ -100,230 +89,7 @@
       <button type="button" aria-pressed="false" data-f="neutral">Sólo</button>
     </div>
 
-    <div class="roly">
-
-      <!-- ===== ŠABLÓNA ROLE: skopíruj celý blok <article>…</article> a prepíš ===== -->
-      <!-- Tím: class="rola" = Osadníci, "rola netvor" = Osadníci, "rola neutral" = sólo -->
-
-      <article class="rola">
-        <div class="foto"><img src="img/emupir.jpg" alt="Emocionálny upír" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Emocionálny upír</h3>
-          <div class="tim">Osadníci</div>
-          <p> Nepijеš krv, ale city. V noci sa nepozorovane prikradneš k spiacemu a vysaješ z neho kus jeho životnej energie, v ktorej sa ukáže, kým naozaj je. Vyber si hráča a zisti jeho auru: skorumpovanú, čistú alebo neznámu. Skorumpovaní hráči patria k zloduchom a čistí hráči patria do tímu dobrákov. Nikto ti však nepovie, čo si v obete zanechal ty.</p>
-        </div>
-      </article>
-
-      
- <article class="rola">
-        <div class="foto"><img src="img/sudicka.jpg" alt="Sudička" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Sudička</h3>
-          <div class="tim">Osadníci</div>
-          <p>Si bytosť, ktorá pradie nite ľudských životov a v každej vidí pravdu. Odkedy sa v Santosville začalo diať zlo, tvoje vlákna sa chvejú a farby sa miešajú. Ľudia ťa nevidia, no ty vidíš všetkých. Každú noc môžeš vybrať hráča a odhaliť jeho rolu. Nite nelžú, no ty nevieš, kto ich pretne.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/alchymistka.jpg" alt="Alchymistka" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Alchymistka</h3>
-          <div class="tim">Osadníci</div>
-          <p>Roky si hľadala spôsob, ako rozoznať človeka od netvora, a našla si ho v krvi. Každú noc si vyberieš dvoch hráčov a zmiešaš kvapku ich krvi v skúmavke. Ak sa spoja, patria do rovnakého tímu. Ak sa odpudzujú, nie. Možné tímy sú: Osadníci, Netvory a jednotlivé sólo roly, každá ako samostatný tím. Krv neklame, no ty sa nikdy nedozvieš, komu patrila.</p>
-        </div>
-      </article>
-
-      <article class="rola">
-        <div class="foto"><img src="img/nekromant.jpg" alt="Nekromant" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Nekromant</h3>
-          <div class="tim">Osadníci</div>
-          <p>Dedina sa ťa bojí, no ty vieš, že smrť nie je koniec. Počas noci sa môžeš potichu vkradnúť na cintorín a anonymne hovoriť s mŕtvymi, ktorí ešte nezabudli, čo videli. Raz počas hry si môžeš v noci vybrať mŕtveho osadníka a na konci noci ho oživíš. Vstane z hrobu a bude ti verne slúžiť, no cena za tento rituál je vysoká a už sa nedá zopakovať.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/voodoo.jpg" alt="Voodoo Kráľovná" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Voodoo Kráľovná</h3>
-          <div class="tim">Osadníci</div>
-          <p>Vládneš dvom voodoo bábikám. Čiernou bábikou a ihlou pošleš hráča k predkom, bielym handrovým panákom zas ochrániš obeť (ochrana sa minie až pri reálnom útoku). Počas prvej noci nemôžeš zabíjať, takže čiernu bábiku môžeš zatiaľ len hladkať.</p>
-        </div>
-      </article>
-
-      <article class="rola">
-        <div class="foto"><img src="img/kat.jpg" alt="Kat" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Kat</h3>
-          <div class="tim">Osadníci</div>
-          <p>Cez deň si vyberieš jedného hráča a zatvoriš ho do mučiarne. V noci s ním môžeš anonymne hovoriť a vypočuť ho, pričom väzeň je chránený pred útokom a nikto iný ho nemôže navštíviť. Potom sa rozhodneš, či ho popravíš, alebo ráno prepustíš. Poprava je definitívna, preto súď s rozvahou, lebo tvoj meč nemá cestu späť.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/doktor.jpg" alt="Doktor" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Morový doktor</h3>
-          <div class="tim">Osadníci</div>
-          <p>Si jediný, kto sa v dedine neštítil ísť k chorým, keď sa všetci ostatní zavreli za dvere. Každú noc si vyberieš jedného hráča a ochrániš ho svojimi bylinami a elixírmi. Ak sa ho niekto pokúsi zabiť, prežije do rána. Ochrániť seba však nemôžeš. Nikdy nevieš, či si ochránil práve toho správneho, a ak vyberieš nesprávne, ráno ťa čaká ďalší hrob.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/vdovec.jpg" alt="Vdovec" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Vdovec</h3>
-          <div class="tim">Osadníci</div>
-          <p>Netvory ti zobrali všetko, čo si miloval. V pištoli ti ostali len dve posledné strely, naliate olovom a hnevom. Môžeš nimi niekoho zabiť, no za deň môžeš vystreliť len jednu. Výstrely sú veľmi hlasné a ozývajú sa celou dolinou, a tak bude tvoja rola odhalená už po prvom výstrele. Nemôžeš strieľať počas diskusnej fázy v prvý deň. Dedina ťa bude ľutovať, no ty vieš, že pomsta nikoho nevráti.</p>
-        </div>
-      </article>
-
- <article class="rola">
-        <div class="foto"><img src="img/strasiak.jpg" alt="Strašiak" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Strašiak</h3>
-          <div class="tim">Osadníci</div>
-          <p>Cez deň si osamelý strážca, ktorý obchádza polia a dohliada na dedinu, no v noci ostávaš stáť na svojom mieste uprostred poľa. Každú noc si môžeš vybrať jedného hráča, ktorého ochrániš. Ten tú noc nemôže byť zabitý a útok dopadne na teba. Keďže si zo slamy aj z dreva, prežiješ prvý útok, no pri druhom sa rozpadneš na handry a slamu. Každú noc sa automaticky chrániš aj sám.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/zaklinac.jpg" alt="Zaklínač" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Zaklínač</h3>
-          <div class="tim">Osadníci</div>
-          <p>Za mincu si sa naučil loviť to, čoho sa ostatní boja. Každú noc nastražíš pascu na jedného hráča, ktorá sa spustí až nasledujúcu noc. Ten, na koho si ju nastražil, tú noc nemôže byť zabitý. Ak naňho zaútočia netvory, najsilnejší z nich zomrie. Útok sólo zabijakov pascu spustí, ale nezabije ich.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/spovednik.jpg" alt="spovedník" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Spovedník</h3>
-          <div class="tim">Osadníci</div>
-          <p>Dedina ti zverila svoje hriechy a ty si ich niesol v tichu. Vyber si hráča, ktorého rola bude odhalená všetkým, keď zomrieš. Aj po smrti ostane z tvojho tela lebka, ktorá prehovorí v tvojom mene. Čo si sa zaprisahal nezradiť, vyjde z nej nahlas pred celou dedinou.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/baronka.jpg" alt="barónka" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Barókan</h3>
-          <div class="tim">Osadníci</div>
-          <p>Si pani tohto kraja. Dlho si sa skrývala medzi poddanými a pozorovala, komu sa dá veriť. Raz počas hry môžeš odhaliť svoju rolu a ukázať pečatný prsteň rodu, čím sa tvoj hlas bude počítať dvojmo po zvyšok hry. Odhaliť sa však znamená stať sa terčom všetkých, ktorí sa paní boja.</p>
-        </div>
-      </article>
-
-  <article class="rola">
-        <div class="foto"><img src="img/bard.jpg" alt="bard" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Bard</h3>
-          <div class="tim">Osadníci</div>
-          <p>Putuješ z dediny do dediny a tvoje piesne spájajú srdcia, ktoré by sa inak nikdy nestretli. Počas prvej noci si môžeš vybrať dvoch hráčov ako milenecký pár a zložiť im pieseň, ktorú nikto nemôže prerušiť. Ak je jeden milenec zabitý, zomrie aj druhý, lebo pieseň sa bez nich končí. Vyhráš, ak vyhrajú osadníci alebo ak sú milenci poslední, ktorí prežili. Niektoré balady sa píšu krvou.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/zobrak.jpg" alt="žobrák" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Žobrák</h3>
-          <div class="tim">Osadníci</div>
-          <p>Nemáš strechu nad hlavou, a tak každú noc prosíš o prístrešie u cudzích. Dedina sa na teba nepozerá, no ty vidíš viac, než by si mal. Ak v noci navštíviš iného hráča, nebudeš zabitý, aj keď ťa pri návšteve napadnú. Ak však navštíviš hráča, ktorý je sám napadnutý, alebo ak navštíviš netvora či sólo zabijaka, zomrieš.</p>
-        </div>
-      </article>
-
-<article class="rola">
-        <div class="foto"><img src="img/exorcista.jpg" alt="Exorcista" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Exorcista</h3>
-          <div class="tim">Osadníci</div>
-          <p>Si posledný, kto sa ešte odvažuje stáť tvárou v tvár zlu. V kostole si zachránil fľašu svätého ohňa, ktorý horí len tam, kde je zlo. Vieš, že môže byť tvojou spásou, ale aj záhubou. Svoj svätý oheň môžeš hodiť na iného hráča. Ak je týmto hráčom netvor, zhorí v plameňoch svätej sily. Ak nie je netvorom, oheň sa obráti proti tebe a zhoríš ty. Dedina ti verí, no ty musíš mať istotu skôr, než zapáliš knôt.</p>
-        </div>
-      </article>
-
- <article class="rola">
-        <div class="foto"><img src="img/striga.jpg" alt="Striga" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Striga</h3>
-          <div class="tim">Osadníci</div>
-          <p>Do dediny si prišla ako obyčajná sused­ka, no v tvojej krvi driemie prastará kliatba. Nemáš žiadnu schopnosť a bojuješ po boku osadníkov. Ak ťa však v noci napadnú netvory, nezomrieš. Kliatba sa prebudí a premeníš sa na strigu. Od toho okamihu patríš k netvorom a vyhrávaš s nimi, no svoju moc si už nezískaš. Dedina netuší, že zlo, ktoré hľadá, má tvoju tvár.</p>
-        </div>
-      </article>
-
-      <article class="rola netvor">
-        <div class="foto"><img src="img/ghul.jpg" alt="Ghul" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Ghúl</h3>
-          <div class="tim">Netvory</div>
-          <p>Keď zapadne slnko, meníš sa na ghúla, vychádzaš von a ovoniaš jedného hráča. Podľa pachu krvi, strachu a viery spoznáš jeho skutočnú rolu a získaš informáciu, ktorú ostatní záporáci nemajú. Nič ťq nezastaví, ani zamknuté dvere, ani cesnak, ani nič... Pach si pamätáš aj po smrti.</p>
-        </div>
-      </article>
-
-      <article class="rola netvor">
-        <div class="foto"><img src="img/mora.jpg" alt="Mora" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Mora</h3>
-          <div class="tim">Netvory</div>
-          <p>Cez deň sa tváriš ako obyčajný osadník. V noci sa zakrádaš do cudzích snov a zanechávaš v nich svoju tmavú stopu. Hráč, ktorého si takto očarila, sa nasledujúcu noc každému, kto ho skúma, javí ako Mora. Kým dedina hľadá netvora medzi svojimi, ty sa pozeráš, ako sa osadníci obracajú proti nevinným.</p>
-        </div>
-      </article>
-
-  <article class="rola netvor">
-        <div class="foto"><img src="img/upir.jpg" alt="Upír" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Upír</h3>
-          <div class="tim">Netvory</div>
-          <p>Si prastarý pán noci a ostatné netvory ťa poslúchajú, lebo vedia, že pamätáš dlhšie než samotná dedina. Tvoj hlas v noci platí dvojnásobne. Keď sa zotmie, tvoje slovo je zákon a nikto sa neodváži odporovať. Dedina vidí obyčajného suseda, no v tme sa ti klaňajú všetci, ktorí sa skrývajú.</p>
-        </div>
-      </article>
-
-<article class="rola netvor">
-        <div class="foto"><img src="img/banshee.jpg" alt="Banshee" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Banshee</h3>
-          <div class="tim">Netvory</div>
-          <p>Cez deň sa tváriš ako obyčajný osadník, no v noci sa tvoj nárek nesie dedinou a zvestuje smrť. Vyber si iného hráča, ktorý bude zabitý, keď zabijú teba, či už ťa dedina obesí, alebo ťa niekto zabije v noci. Tvoj posledný výkrik nezostane bez odozvy a odnesie so sebou ďalšiu dušu. Kto ti siahne na život, nikdy nebude vedieť, koho ešte tým zničí.</p>
-        </div>
-      </article>
-
-      <article class="rola neutral">
-        <div class="foto"><img src="img/trickster.jpg" alt="Trickster" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Trickster</h3>
-          <div class="tim">Sólo</div>
-          <p>Tvojím cieľom je obohrať dobrákov aj zloduchov a dotlačiť ich k tomu, aby ťa hlasovaním poslali na popravisko. Celý život si ich iba vodil za nos svojimi klamstvami, a toto je tvoj finálny, veľkolepý žart – ak ťa vlastnoručne odsúdia a zabijú, vyhrávaš.</p>
-        </div>
-      </article>
-
- <article class="rola neutral">
-        <div class="foto"><img src="img/pomstitel.jpg" alt="Pomstiteľ" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Pomstiteľ</h3>
-          <div class="tim">Sólo</div>
-          <p>Na začiatku hry ti je pridelený dedinčan, ktorému dlhuješ odplatu. Tvojím cieľom je, aby ho počas dňa popravila dedina. Aby si vyhral, musíš ho dostať na šibenicu skôr, než zomrieš ty. Ak tvoja obeť zomrie iným spôsobom, pomsta ostane nedokončená, no vyhráš so zlou alianciou (netvory a sólo zabijaci). Obeťou môže byť ktorákoľvek rola dediny okrem Strigy.</p>
-        </div>
-      </article>
-
-      <article class="rola neutral">
-        <div class="foto"><img src="img/dvojtvar.jpg" alt="Dvojtvár" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Dvojtvár</h3>
-          <div class="tim">Sólo</div>
-          <p>Cez deň si to obyčajný sused, ktorý sa usmieva, pozdravuje a pomáha pri žatve. Keď sa zotmie, ukáže sa tvoja druhá tvár, a tá nepozná zľutovanie. Každú noc si vyberieš jednu obeť a zabiješ ju, a ráno sa postavíš medzi ostatných s čistým svedomím a nevinným výrazom. Vyhrávaš len vtedy, keď prežiješ ako posledný. Ak ťa dedina pošle na šibenicu, zistí, ktorá z tvojich tvárí bola tá pravá.</p>
-        </div>
-      </article>
-
- <article class="rola neutral">
-        <div class="foto"><img src="img/wendigo.jpg" alt="Wendigo" onerror="this.remove()"><span></span></div>
-        <div class="txt">
-          <h3>Wendigo</h3>
-          <div class="tim">Sólo</div>
-          <p>Si duch zimného hladu, ktorý sa nikdy nenasýti. Každú noc môžeš zabiť hráča tým, že ho zješ, alebo si udržať hlad na neskôr. Ak počkáš, tvoj hlad narastie a v jednu noc dokážeš zabiť až 5 hráčov. Čím dlhšie hladuješ, tým krvavejšia bude hostina. Vyhrávaš len vtedy, keď prežiješ ako posledný. Kým žije čo i len jeden človek, tvoj hlad neutíchne.</p>
-        </div>
-      </article>
-      <!-- sem pridávaj ďalšie roly -->
-
-    </div>
+    <div class="roly" id="roly-zoznam"></div>
   </div>
 </section>
 
@@ -331,7 +97,7 @@
 <section id="prihlaska">
   <div class="wrap">
     <h2>Prihláška</h2>
-    <p class="lead">Hrá sa v 16 hráčoch. Vyplň formulár a uveď svoje meno na Discorde.</p>
+    <p class="lead" id="prihlaska-text"></p>
 
     <!-- Odkaz na formulár nastavíš v data.js (ODKAZY.prihlaska) -->
     <div id="prihlaska-form"></div>
@@ -344,16 +110,13 @@
   <div class="wrap">
     <h2>Časté otázky</h2>
     <!-- ZMEŇ: skopíruj <details> blok a pridaj ďalšie otázky -->
-    <details><summary>Čo ak nestihnem napísať nočnú akciu?</summary><p>Moderátor ju nezapočíta a tvoja rola v tú noc nič nevykoná.</p></details>
-    <details><summary>Môžem ukázať svoju rolu ostatným?</summary><p>Ak chceš, môžeš tvrdiť čokoľvek. Screenshoty zo súkromných správ s moderátorom sú zakázané.</p></details>
-    <details><summary>Čo ak nemôžem hrať niekoľko dní?</summary><p>Daj vedieť vopred. Ak mlčíš dva dni po sebe, dedina ťa zoberie ako mŕtveho.</p></details>
-    <details><summary>Čo sa stane pri remíze v hlasovaní?</summary><p>Nikto nie je obesený a hra pokračuje nocou.</p></details>
+    <div id="faq-zoznam"></div>
   </div>
 </section>
 
 
 <footer>
-  <div class="wrap">Santosville · moderuje <b>Santos</b> na <a href="https://discord.gg/TVOJ_ODKAZ" data-chat target="_blank" rel="noopener">Discorde</a></div>
+  <div class="wrap">Santosville · moderuje <b id="pata-moderator">Santos</b> na <a href="https://discord.gg/mjeFhJpp4Q" data-chat target="_blank" rel="noopener">Discorde</a></div>
 </footer>
 
 </body>

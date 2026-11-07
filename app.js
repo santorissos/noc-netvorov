@@ -114,6 +114,41 @@ document.addEventListener("DOMContentLoaded",function(){
     vykresliKroniku();
   }
 
+  /* ---- Texty webu (objekt WEB v data.js) ---- */
+  if(typeof WEB!=="undefined"&&WEB){
+    var nastav=function(id,html){var e=$(id); if(e&&html!=null) e.innerHTML=html};
+    nastav("uvod-text",esc(WEB.uvod));
+    nastav("pravidla-uvod",(WEB.pravidla_uvod||[]).map(function(t){return '<p class="lead">'+esc(t)+'</p>'}).join(""));
+    nastav("pravidla-casy",(WEB.casy||[]).map(function(c){return '<li'+(c.den?' class="den"':'')+'><time>'+esc(c.cas)+'</time>'+esc(c.text)+'</li>'}).join(""));
+    nastav("pravidla-poznamka",esc(WEB.casy_poznamka));
+    nastav("pravidla-vyhra",(WEB.vyhra||[]).map(function(t){return '<li>'+esc(t)+'</li>'}).join(""));
+    nastav("prihlaska-text",esc(WEB.prihlaska_text));
+    nastav("pata-moderator",esc(WEB.moderator));
+    nastav("faq-zoznam",(WEB.faq||[]).map(function(f){return '<details><summary>'+esc(f.o)+'</summary><p>'+esc(f.a)+'</p></details>'}).join(""));
+  }
+
+  /* ---- Karty rolí (zoznam ROLY v data.js) ---- */
+  var rz=$("roly-zoznam");
+  if(rz&&typeof ROLY!=="undefined"){
+    var TIMY={dedina:["","Osadníci"],netvor:[" netvor","Netvory"],neutral:[" neutral","Sólo"]};
+    rz.innerHTML=ROLY.map(function(r){
+      var t=TIMY[r.tim]||TIMY.dedina;
+      return '<article class="rola'+t[0]+(r.skryta?' skryta':'')+'"><div class="foto">'+
+        (r.foto?'<img src="img/'+encodeURIComponent(r.foto)+'" alt="'+esc(r.nazov)+'" onerror="this.remove()">':'')+'<span></span></div>'+
+        '<div class="txt"><h3>'+esc(r.nazov)+'</h3><div class="tim">'+t[1]+'</div><p>'+esc(r.popis)+'</p></div></article>';
+    }).join("");
+  }
+
+  /* ---- Zahmlenie rolí ---- */
+  if(typeof ROLY_SKRYTE!=="undefined"&&ROLY_SKRYTE){
+    var norm=function(t){return String(t).trim().toLowerCase()};
+    var zoznam=ROLY_SKRYTE===true?true:[].concat(ROLY_SKRYTE).map(norm);
+    document.querySelectorAll(".rola").forEach(function(r){
+      var h=r.querySelector("h3");
+      if(zoznam===true||(h&&zoznam.indexOf(norm(h.textContent))>-1)) r.classList.add("skryta");
+    });
+  }
+
   /* ---- Filter rolí ---- */
   document.querySelectorAll(".filter button").forEach(function(b){
     b.addEventListener("click",function(){
@@ -290,11 +325,11 @@ document.addEventListener("DOMContentLoaded",function(){
       $("archiv").addEventListener("click",function(e){
         var b=e.target.closest(".zmaz"); if(!b||!jeAdmin()) return;
         var g=ARCHIV[Number(b.dataset.idx)];
-        if(!g||!window.confirm('Odstrániť hru "'+(g.nazov||"bez názvu")+'" zo zoznamu?\nNa stránke sa zmena prejaví až po úprave data.js a nahratí na Netlify.')) return;
+        if(!g||!window.confirm('Odstrániť hru "'+(g.nazov||"bez názvu")+'" zo zoznamu?\nNa stránke sa zmena prejaví až po úprave data.js a nahratí na GitHub.')) return;
         ARCHIV.splice(Number(b.dataset.idx),1);
         vykresliArchiv();
         vypis("var ARCHIV = "+JSON.stringify(ARCHIV,null,1)+";",
-          "Hra je odstránená len v náhľade. V data.js nahraď celý blok ARCHIV (od var ARCHIV po ;) týmto textom, ktorý je už skopírovaný, a nahraj na Netlify.");
+          "Hra je odstránená len v náhľade. V data.js nahraď celý blok ARCHIV (od var ARCHIV po ;) týmto textom, ktorý je už skopírovaný, a nahraj na GitHub.");
       });
 
       $("zaloha-btn").addEventListener("click",function(){

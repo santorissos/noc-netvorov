@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Správa – Santosville</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><text y=%27.9em%27 font-size=%2790%27>🌕</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="data.js"></script>
+<script src="admin.js"></script>
+</head>
+<body class="admin">
+
+<div class="admin-bar">
+  <div class="wrap">
+    <a class="logo" href="index.html">&larr; Web</a>
+    <b>Správa hry</b>
+    <span id="a-stav" class="a-stav">Bez zmien</span>
+    <button type="button" class="btn druhy" id="a-nacitat">Načítať data.js</button>
+    <input type="file" id="a-subor" accept=".js,text/javascript" hidden>
+    <button type="button" class="btn" id="a-stiahnut">Stiahnuť data.js</button>
+  </div>
+</div>
+
+<section class="prvy-radok" style="border-top:0">
+  <div class="wrap">
+    <div class="poznamka" id="a-navod">
+      <b>Ako to funguje:</b> všetko vypĺňaš v poliach nižšie, zmeny sa priebežne ukladajú len v tomto prehliadači (ako koncept).
+      Keď si hotový, klikni na <b>Stiahnuť data.js</b>, nahraď ním starý <b>data.js</b> v repozitári na GitHube. Rozpracovanú prácu z iného počítača načítaš cez <b>Načítať data.js</b>.
+      Fotky hráčov (<b>img/hraci/</b>) a rolí (<b>img/</b>) treba do priečinka vložiť ručne, tu zadávaš len názov súboru.
+    </div>
+    <div class="poznamka" id="a-koncept" hidden>
+      Načítal sa tvoj rozpracovaný koncept z tohto prehliadača.
+      <button type="button" class="zmaz" id="a-zahodit">Zahodiť koncept a načítať dáta z webu</button>
+    </div>
+    <details class="poznamka kontrola" id="a-kontrola" hidden></details>
+    <div class="a-taby" id="a-taby" role="tablist"></div>
+    <div id="a-panel"></div>
+    <datalist id="a-hraci"></datalist>
+    <datalist id="a-roly"></datalist>
+  </div>
+</section>
+
+</body>
+</html>

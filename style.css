@@ -233,3 +233,55 @@ a.hrac:hover b{color:var(--zlato)}
 .mozaika .mrtvy:hover .av,a.hrac.mrtvy:hover .av{filter:grayscale(.4);opacity:.9}
 @media (hover:none){.mozaika a:hover .av,a.hrac:hover .av{transform:none}}
 @media (prefers-reduced-motion:reduce){.av,.av img{transition:none}}
+
+/* ===== Zahmlené roly (zoznam ROLY_SKRYTE v data.js alebo trieda "skryta") ===== */
+.rola.skryta>*{filter:blur(9px);opacity:.75;user-select:none;pointer-events:none}
+.rola.skryta{cursor:default}
+.rola.skryta:hover,.rola.skryta:focus-within{transform:none;box-shadow:none;border-color:var(--hmla)}
+
+/* ===== Správa (admin.html) ===== */
+body.admin .admin-bar{position:sticky;top:0;z-index:10;background:var(--noc2);border-bottom:1px solid var(--hmla)}
+body.admin .admin-bar .wrap{display:flex;gap:8px 18px;flex-wrap:wrap;align-items:center;padding-top:10px;padding-bottom:10px}
+body.admin .admin-bar .logo{color:var(--striebro);text-decoration:none}
+body.admin .admin-bar b{font-family:Almendra,serif;font-size:1.25rem;margin-right:auto}
+.a-stav{font-size:.95rem;color:var(--striebro)}
+.a-stav.zmenene{color:var(--zlato)}
+.admin-bar .btn{border:0;cursor:pointer;padding:8px 20px;font-size:1rem}
+#a-navod,#a-koncept{margin-bottom:14px}
+#a-koncept .zmaz{margin-left:8px}
+.a-taby{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 10px}
+.a-taby .tab{background:none;border:1px solid var(--hmla);color:var(--striebro);padding:8px 18px;font:inherit;border-radius:2px;cursor:pointer}
+.a-taby .tab[aria-pressed="true"]{background:var(--hmla);color:var(--kost)}
+#a-panel h3{margin:28px 0 8px}
+.mriezka{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 18px}
+.pole{display:flex;flex-direction:column;gap:4px;font-size:1rem}
+.pole.siroke{grid-column:1/-1}
+.pole>span{color:var(--striebro);font-size:.95rem}
+.pole small{color:var(--striebro);opacity:.8}
+.pole input:not([type=checkbox]),.pole select,.pole textarea,.a-tab input{width:100%;background:var(--noc);color:var(--kost);border:1px solid var(--hmla);padding:8px 10px;font:inherit;font-size:1rem;border-radius:2px}
+.pole textarea{resize:vertical;line-height:1.5}
+.pole input:focus,.pole select:focus,.pole textarea:focus,.a-tab input:focus{outline:2px solid var(--zlato);outline-offset:1px}
+.pole.zaskrt{flex-direction:row;align-items:center;gap:8px}
+.pole.zaskrt>span{color:var(--kost)}
+.vitazi-vyber{display:flex;flex-wrap:wrap;gap:6px 18px}
+.karta{border:1px solid var(--hmla);border-radius:2px;background:var(--noc2);margin-bottom:8px;padding:0}
+.karta summary{padding:10px 14px;font-size:1.1rem}
+.karta-telo{padding:6px 14px 16px;border-top:1px solid var(--hmla)}
+.karta-telo>.mriezka{margin-top:12px}
+.akcie{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn.mala,.zmaz.mala{padding:5px 14px;font-size:.95rem;font-family:inherit;cursor:pointer}
+button.btn{border:0;cursor:pointer}
+.prazdne{color:var(--striebro);font-style:italic}
+.a-tab td{padding:6px 6px}
+.a-tab td:first-child input{min-width:70px}
+.a-tab td input{min-width:120px}
+
+.a-tab input[type=checkbox]{width:auto;min-width:0}
+.rychla{background:var(--noc2);border:1px solid var(--hmla);border-left:3px solid var(--krv);padding:12px 16px 4px;margin:0 0 18px;border-radius:2px}
+.rychla h4{font-family:Almendra,serif;font-size:1.15rem;margin:0 0 10px;color:var(--kost)}
+.rychla .info{color:var(--striebro);font-size:.95rem;margin:0 0 8px}
+#a-panel h4{font-family:Almendra,serif;font-size:1.15rem;margin:18px 0 8px;color:var(--striebro)}
+.kontrola{margin:14px 0;border-left-color:var(--krv)}
+.kontrola summary{font-size:1.1rem;color:var(--kost)}
+.kontrola ul{margin:8px 0 0;padding-left:20px}
+body.admin .admin-bar .btn.druhy{margin-left:0;padding:8px 16px;font-size:1rem;cursor:pointer}
